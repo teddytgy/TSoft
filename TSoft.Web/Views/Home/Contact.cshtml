@@ -1,0 +1,115 @@
+﻿<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDe_plfwq0zWe54I02w1LAYt0SO7fLvoiY" async="" defer="defer"></script>
+
+@model TSoft.Web.ViewModels.EmailViewModel
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .wide
+    {
+        width: 300px;
+    }
+</style>
+<!-- CSS Page Style -->
+<link href="~/Content/Custom/pages/page_contact.css" rel="stylesheet" />
+<!--=== Content Part ===-->
+@using (Html.BeginForm("Send", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+    <div class="row margin-bottom-30">
+        <div class="col-md-9 mb-margin-bottom-30">
+            <!-- Google Map -->
+            <div id="map" class="map map-box map-box-space margin-bottom-40"></div>
+            <!-- End Google Map -->
+            <div class="headline">
+                <h2>Contact Form</h2>
+            </div>            
+            <div class="form-horizontal">                                
+                
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FullName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @style = "width:400px" } })
+                        @Html.ValidationMessageFor(model => model.FullName)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FromEmail, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FromEmail, new { htmlAttributes = new { @style = "width:400px" } })
+                        @Html.ValidationMessageFor(model => model.FromEmail)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Subject, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @style = "width:400px" } })
+                        @Html.ValidationMessageFor(model => model.Subject)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Message, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { rows = "5", @style = "width:400px" } })
+                        @Html.ValidationMessageFor(model => model.Message)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Send" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--/col-md-9-->
+
+        <div class="col-md-3">
+            <!-- Contacts -->
+            <div class="headline">
+                <h2>Contacts</h2>
+            </div>
+            <ul class="list-unstyled who margin-bottom-30">
+                <li><a href="#"><i class="fa fa-home"></i>5555 Columbia Pike Suite: 102, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arlington VA 22204</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i>(703) 820 8282</a></li>
+                <li><a href="#"><i class=""></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(703) 820 1687</a></li>
+                <li><a href="#"><i class="fa fa-fax"></i>(703) 820 8283</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i>agapedentalstudio@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-globe"></i>http://www.agapedentalstudio.com</a></li>
+            </ul>
+
+            <!-- Business Hours -->
+            <div class="headline">
+                <h2>Business Hours</h2>
+            </div>
+            <ul class="list-unstyled margin-bottom-30">
+                <li><strong>Monday:</strong> 9:00 AM to 5:00 PM</li>
+                <li><strong>Tuesday:</strong> Closed</li>
+                <li><strong>Wednesday:</strong> 9:00 AM to 5:00 PM</li>
+                <li><strong>Thursday:</strong> 11:00 AM to 8:00 PM</li>               
+                <li><strong>Friday:</strong> Closed</li>
+                <li><strong>Saturday:</strong> 9:00 AM to 2:00 PM</li>
+                <li><strong>Sunday:</strong> Closed</li>
+            </ul>
+        </div>
+        <!--/col-md-3-->
+    </div>
+    <!--/row-->
+</div>
+}
+<!--/container-->
+<!--=== End Content Part ===-->
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Custom/pages/contact.js"></script>
+    <script type="text/javascript" src="~/Scripts/Custom/gmap.js"></script>
+}
+

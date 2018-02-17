@@ -1,0 +1,43 @@
+﻿@model RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<h2>Create a new account.</h2>
+
+<div class="row">
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "span4" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <div class="control-group">
+            <label>Username</label>
+            @Html.TextBoxFor(m => m.UserName, new {placeholder="Enter user name"})        
+            <label>First Name</label>
+            @Html.TextBoxFor(m => m.FirstName, new {placeholder="Enter first name"})        
+            <label>Last Name</label>
+            @Html.TextBoxFor(m => m.LastName, new {placeholder="Enter last name"})        
+            <label>Phone</label>
+            @Html.TextBoxFor(m => m.Phone, new {placeholder="Enter phone"})       
+            <label>Email</label>
+            @Html.TextBoxFor(m => m.Email, new {placeholder="Enter email"})       
+            <label>Password</label>
+            @Html.PasswordFor(m => m.Password, new {placeholder="Enter password"})        
+            <label>Confirm Password</label>
+            @Html.PasswordFor(m => m.ConfirmPassword, new {placeholder="Enter confirm password"})
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Register</button>
+            @Html.ActionLink("Cancel", "Index", "Home", null, new {@class="btn"})
+        </div>        
+        
+    </fieldset>
+}
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

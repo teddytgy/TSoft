@@ -1,0 +1,61 @@
+﻿@model SearchLog4Net_ErrorViewModel
+
+<div id="errorList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Date")
+                </th>
+                <th>
+                    @Html.DisplayName("Level")
+                </th>
+                <th>
+                    @Html.DisplayName("Logger")
+                </th>
+                <th style="width:200px;">
+                    @Html.DisplayName("Message")
+                </th>
+                <th>
+                    @Html.DisplayName("Thread")
+                </th>               
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SearchResults)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Level)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Logger)
+                    </td>
+                    <td style="width:200px;">
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thread)
+                    </td>                    
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.PagedListPager(Model.SearchResults, page => Url.Action("Index", new RouteValueDictionary() {
+                            { "Page", page },
+                            { "LastName", Model.Level},
+                            { "FirstName", Model.Logger},
+                            { "Email", Model.Thread}
+                        }),
+   PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "errorList", OnComplete = "PagedOnComplete" }))
+</div>

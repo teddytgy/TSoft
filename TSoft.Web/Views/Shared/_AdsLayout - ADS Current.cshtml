@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    @using MvcBreadCrumbs;
+    <!-- Title -->
+    <title>Agape Dental Studio - General dentist Whitening, Cleaning and Extraction Arlington VA Columbia Pike</title>
+
+    <!-- Meta -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agape Dental Studio is a Family Dentistry offers a wide range of dental services, Cleaning, Extraction, Tooth Whitening! Call us in Columbia Pike Arlington VA if you are in the area!">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="Agape Dental Studio is a Family Dentistry offers a wide range of dental services, Cleaning, Extraction, Tooth Whitening! Call us in Columbia Pike Arlington VA if you are in the area!">
+    <meta name="twitter:title" content="Agape Dental Studio - General dentist Whitening, Cleaning and Extraction Arlington VA Columbia Pike">
+    <meta name="keywords" content="General Dentistry, Whitening, Cleaning and Extraction">
+    <meta name="author" content="Theodros Tewolde">
+   
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon/favicon.png">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .modal-content {
+            width: 600px !important;
+            margin: 30px auto !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!--=== Top ===-->
+    <div class="top">
+        <div class="container">
+            <ul class="loginbar pull-right">
+                @*<li><a href="page_faq.html">Help</a></li>*@
+                <li></li>
+                @*@if (Request.IsAuthenticated)
+                    {
+                        <li>
+                            Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    }*@
+            </ul>
+        </div>
+    </div>
+    <!--=== End Top ===-->
+    <!--=== Header ===-->
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="adslogo-header">
+                    <a class="navbar-brand" href="index.html">
+                        <img class="adslogo" id="logo-header" src="~/Images/adsLogo.png" alt="Agape Dental Studio">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div style="margin-top:80px;" class="collapse navbar-collapse navbar-responsive-collapse">
+                    <ul style="margin-top:-35px;" class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            @Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new Dictionary<string, object> { { "class", "dropdown" } })
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
+                                Services
+                                <i class="icon-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Preventive Dentistry", "PreventiveCare", "Service")</li>
+                                <li>@Html.ActionLink("General/Restorative Dentistry", "GeneralDentistry", "Service")</li>
+                                @*<li>@Html.ActionLink("Restorative Dentistry", "RestorativeDentistry", "Service")</li>*@
+                                <li>@Html.ActionLink("Cosmetics Dentistry", "CosmeticsDentistry", "Service")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
+                                Patient Info
+                                <i class="icon-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("New Patient", "NewPatient", "Patient")</li>
+                                <li>@Html.ActionLink("Financial Information", "FinancialInformation", "Patient")</li>
+                                <li>@Html.ActionLink("Agape Savings Plan", "ASP", "Patient")</li>
+                                @*<li>@Html.ActionLink("Dental FAQ", "DentalFAQ", "Patient")</li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
+                                About Us
+                                <i class="icon-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Meet Dr. Tekle", "MeettheDoctors", "Home")</li>
+                                @*<li>@Html.ActionLink("Meet Our Staff", "MeetOurStaff", "Home")</li>
+                                <li>@Html.ActionLink("Photo Gallery", "PhotoGallery", "Home")</li>*@
+                                <li>@Html.ActionLink("Our Philosophy", "OurPhilosophy", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Contact Us", "Contact", "Home", routeValues: null, htmlAttributes: new Dictionary<string, object> { { "class", "dropdown" } })
+                        </li>
+                    </ul>
+                </div>
+                <!-- /navbar-collapse -->
+            </div>
+        </div>
+    </div>
+    <!--=== End Header ===-->
+    <!--=== Slider ===-->
+    <div id="layerslider" style="width: 100%; height: 500px;">
+        <!-- First slide -->
+        <div class="ls-slide" style="slidedirection:right; transition2d:92,93,105; ">
+            <img src="~/Images/bg/bg.jpg" class="ls-bg" alt="Slide background" />
+            <span class="ls-s-1" style="color:#fff; line-height:45px; font-weight:100; font-size:25px; top:160px; left:-50px; slidedirection:top; slideoutdirection:left; durationin:1000; durationout:1000; ">
+                Everyone deserves healthy, beautiful smile!
+            </span>
+            <span class="ls-s-1" style="color:#fff; line-height:45px; font-weight:200; font-size:25px; top:220px; left:-50px; slidedirection:left; slideoutdirection:top; durationin:2500; durationout:1500;">
+                "Beautiful smile begin here"
+            </span>
+            <a class="btn-u btn-u-green ls-s-1" href="#" style="color:#fff; border: solid 1px #000; padding: 9px 20px; font-size:25px; top:290px; left:-50px; slidedirection:bottom; slideoutdirection:bottom; durationin:2000; durationout:2000;">
+                Call Today&nbsp;&nbsp;(703) 820 8282
+            </a>
+        </div>
+        <!-- End First slide -->
+        <!-- Second Slide -->
+        <div class="ls-slide" data-ls="slidedelay:4500; transition2d:25;">
+            <img src="~/Images/bg/bg2.jpg" class="ls-bg" alt="Slide background" />
+            <span class="ls-s-1" style="line-height:45px; font-size:25px; color:#fff; top:200px; left:100px; slidedirection:top; slideoutdirection:bottom; durationin:2000; durationout:2000; delayin:1000;">
+                Complete family dental service <br> from people who cares
+            </span>
+            <a class="btn-u btn-u-green ls-s-1" href="#" style="color:#fff; border: solid 1px #000; padding: 9px 20px; font-size:25px; top:320px; left:100px; slidedirection:bottom; slideoutdirection:bottom; durationin:3500; durationout:3500; ">
+                Call Today&nbsp;&nbsp;(703) 820 8282
+            </a>
+        </div>
+        <!-- End Second Slide -->
+        <!-- Third Slide -->
+        <div class="ls-slide" data-ls="transition2d:93;">
+            <img src="~/Images/bg/bg3.jpg" class="ls-bg" alt="Slide background">
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color:#fff; font-size:24px; top:70px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:1500; durationout:500; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:70px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:1500; durationout:500; ">
+                Dental Exams and Cleanings
+            </span>
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color: #fff; font-size:24px; top:120px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:2000; durationout:1000; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:120px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:2000; durationout:1000; ">
+                Digital X-rays
+            </span>
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color: #fff; font-size:24px; top:170px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:2500; durationout:1500; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:170px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:2500; durationout:1500; ">
+                Fillings
+            </span>
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color: #fff; font-size:24px; top:220px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:3000; durationout:2000; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:220px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:3000; durationout:2000; ">
+                Extractions
+            </span>
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color: #fff; font-size:24px; top:270px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:3500; durationout:2500; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:270px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:3500; durationout:2500; ">
+                Crowns, Bonding
+            </span>
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color: #fff; font-size:24px; top:320px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:4000; durationout:3000; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:320px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:4000; durationout:3000; ">
+                Bridges, Dentures
+            </span>
+            <i class="fa fa-chevron-circle-right ls-s-1" style="color: #fff; font-size:24px; top:370px; left:-90px; slidedirection:left; slideoutdirection:top; durationin:4500; durationout:3500; "></i>
+            <span class="ls-s-2" style="color:#fff; font-weight:200; font-size:28px; top:370px; left:-60px; slidedirection:top; slideoutdirection:bottom; durationin:4500; durationout:3500; ">
+                Emergency Dental Care
+            </span>
+            <a class="btn-u btn-u-green ls-s-1" href="#" style="color:#fff; border: solid 1px #000; padding: 9px 20px; font-size:25px; top:430px; left:-90px; slidedirection:bottom; slideoutdirection:bottom; durationin:5000; durationout:5000; ">
+                Call Today&nbsp;&nbsp;(703) 820 8282
+            </a>
+        </div>
+        <!-- Third Slide -->
+    </div><!--/layer_slider-->
+    <!--=== End Slider ===-->
+    <!--=== Call to Action ===-->
+    <div class="call-action-v1 bg-color-light">
+        <div class="container">
+            <div class="call-action-v1-box">
+                <div class="call-action-v1-in">
+                    <p style="color:#000; text-transform: uppercase; text-align: center;">Creating healthy smiles with a gentle touch.</p>
+                </div>
+                <div style="text-align: center;" class="call-action-v1-in inner-btn page-scroll">                    
+                    <button class="btn-u" type="button" data-toggle="modal" data-target=".bs-example-modal-lg" id="appointmentbtn">Make Appointment</button>                  
+                </div>
+            </div>
+        </div>
+    </div>  
+    @{ Html.RenderPartial("_ContactForm"); }
+    <!--=== End Call to Action ===-->
+    <!-- Content Part -->
+    @RenderBody()
+    <!-- End Content Part -->
+    <!-- Subscribe Content -->
+    @{ Html.RenderPartial("_Subscribe"); }
+    <!-- End Subscribe Content -->
+    <!--=== Footer ===-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <!-- About -->
+                    <div class="headline">
+                        <h2>Welcome to Our Dental Family</h2>
+                    </div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">
+                        Welcome to Agape Dental Studio, we are glad you have chosen us for your oral health needs and hope that
+                        every encounter with our office and staff exceeds your expectations. We know that our patients have a
+                        choice in area dentists, so we take it upon ourselves to deliver the level of dental care and compassion
+                        we would want for our own families.
+                    </p>
+                    <!-- /input-group -->
+                </div>
+                <!--/col-md-4-->
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <!-- Monthly Newsletter -->
+                        <div class="headline">
+                            <h2>Monthly Newsletter</h2>
+                        </div>
+                        <p>Subscribe to our newsletter and stay up to date with specials and deals!</p>
+                        <form class="footer-subsribe">
+                            <div class="input-group">
+                                @*<input type="text" class="form-control" placeholder="Email Address">*@
+                                <span class="input-group-btn">                                    
+                                    <button class="btn-u" type="button" data-toggle="modal" data-target=".subscribe-modal-lg" id="subscribebtn">Subscribe</button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </form>
+                    </div>                    
+                </div>                
+                <!--/col-md-4-->
+
+                <div class="col-md-4">
+                    <!-- Monthly Newsletter -->
+                    <div class="headline">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <address class="md-margin-bottom-40">
+                        <div class="margin-bottom-25 md-margin-bottom-40">
+                            <a style="color:#dadada;" href="#"><i class="fa fa-home">&nbsp;&nbsp;&nbsp;&nbsp;</i>5555 Columbia Pike Suite: 102, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arlington VA 22204</a><br />
+                            <a style="color:#dadada;" href="#"><i class="fa fa-phone">&nbsp;&nbsp;&nbsp;&nbsp;</i>(703) 820 8282</a><br />
+                            <a style="color:#dadada;" href="#"><i class=""></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(703) 820 1687</a><br />
+                            <a style="color:#dadada;" href="#"><i class="fa fa-fax">&nbsp;&nbsp;&nbsp;</i>(703) 820 8283</a><br />
+                            <a style="color:#dadada;" href="mailto:agapedentalstudio@gmail.com"><i class="fa fa-envelope">&nbsp;&nbsp;&nbsp;</i>agapedentalstudio@gmail.com</a><br />
+                            <a style="color:#dadada;" href="#"><i class="fa fa-globe">&nbsp;&nbsp;&nbsp;&nbsp;</i>http://www.agapedentalstudio.com</a>
+                        </div>
+                    </address>                    
+                <!--/col-md-4-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/container-->
+    </div>
+    </div>
+    <!--/footer-->
+    <!--=== End Footer ===-->
+    <!--=== Copyright ===-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#">
+                        <img id="logo-footer" src="~/images/adslogo-t.png" class="pull-left" alt="" />
+                    </a>
+                </div>
+                <div style="text-align: right;" class="col-md-6">
+                    <p class="copyright-space">
+                        2016 &copy; T-Tech. ALL Rights Reserved.
+                    </p>
+                </div>
+
+            </div>
+            <!--/row-->
+        </div>
+        <!--/container-->
+    </div>
+    <!--/copyright-->
+    <!--=== End Copyright ===-->    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/customs")
+    @RenderSection("scripts", required: false)
+    @*<script src="~/Plugins/js/bootbox/bootbox.js"></script>*@
+    <script type="text/javascript">
+        jQuery(document).ready(function () {           
+            App.init();
+            LayerSlider.initLayerSlider();
+            OwlCarousel.initOwlCarousel();
+            OwlRecentWorks.initOwlRecentWorksV2();
+        });
+       
+    </script>
+    <!--[if lt IE 9]>
+        <script src="plugins/respond.js"></script>
+    <![endif]-->
+</body>
+</html>

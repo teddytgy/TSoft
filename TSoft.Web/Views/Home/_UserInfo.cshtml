@@ -1,0 +1,68 @@
+﻿@model SearchUserViewModel
+@*@Html.PagedListGoToPageForm(Model.SearchResults, Url.Action("ManageUser"))*@
+
+<div id="userList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("User Name")
+                </th>
+                <th>
+                    @Html.DisplayName("First Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Last Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Email")
+                </th>
+                <th>
+                    @Html.DisplayName("Phone")
+                </th>
+                @*<th>
+                                @Html.DisplayName("Roles")
+                            </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SearchResults)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    @*<td>
+                                @Html.DisplayFor(modelItem => item.Roles.)
+                            </td>*@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.PagedListPager(Model.SearchResults, page => Url.Action("ManageUser", new RouteValueDictionary() {
+                            { "Page", page },
+                            { "LastName", Model.LastName},
+                            { "FirstName", Model.FirstName},
+                            { "Email", Model.Email}
+                        }),
+                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "userList", OnComplete = "PagedOnComplete" }))
+</div>
